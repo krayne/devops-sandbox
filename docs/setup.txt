@@ -1,0 +1,20 @@
+
+# docs
+https://jenkins.io/doc/book/installing/#debian-ubuntu
+
+
+
+# start jenkins container
+docker run \
+  --name jenkins-blueocean \
+  -u root \
+  --rm \  
+  -d \ 
+  -p 8080:8080 \ 
+  -v jenkins-data:/var/jenkins_home \ 
+  jenkinsci/blueocean 
+
+
+# start gitlab container
+docker run -d -p 8090:80 -p 2222:22 --name gitlab --restart always --volume /srv/gitlab/config:/etc/gitlab -v /srv/gitlab/logs:/var/log/gitlab -v /srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest
+
